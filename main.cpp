@@ -115,15 +115,15 @@ int main() // Test case: run the program involving 8 tasks and associated order 
     }
 
     vector<OrderPair> myPairs;
-    ans = 1;
+    int orderPairAns = 1;
 
     // Enter the pair relationships for tasks
-    while(ans != 0) {
+    while(orderPairAns != 0) {
         cout << "Please input your task order pair as two numbers with a space in between. The order indicates of inputs represents the order the tasks will be done in: ";
         cin >> firstNum >> secondNum;
 
         // Check validity of pairs
-        if(0 < firstNum && firstNum < (ans + 1) && 0 < secondNum && secondNum < (ans + 1)){
+        if(firstNum > 0 && firstNum < (ans + 1) && secondNum > 0 && secondNum < (ans + 1)){
             OrderPair* curPair = new OrderPair(firstNum, secondNum);
             myPairs.push_back(*curPair);
         }
@@ -135,7 +135,7 @@ int main() // Test case: run the program involving 8 tasks and associated order 
             cout << "Inputted pair is not valid. Your input has been disregarded." << endl;
 
         cout << "Do you want to order another task? 1 for Yes 0 for No: ";
-        cin >> ans;
+        cin >> orderPairAns;
     }
 
     Digraph* myDigraph = new Digraph(adjList, myPairs);
